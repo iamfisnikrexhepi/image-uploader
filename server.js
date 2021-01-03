@@ -2,7 +2,7 @@
 const express = require('express')
 const cors = require('cors');
 const path = require('path')
-const serverConfig = require('./server/config/serverConfig.json');
+const serverConfig = require('./server/config/server.config.json');
 
 // Getting our UploadImage route;
 const uploadImage = require('./server/routes/upload.image.route');

@@ -1,6 +1,6 @@
 const express = require('express');
 const router = express.Router();
-const upload = require('../service/upload.image.service');
+const upload = require('../services/upload.image.service');
 
 router.post('/', upload.single('Image'), (req, res, next) => {
     const file = req.file
