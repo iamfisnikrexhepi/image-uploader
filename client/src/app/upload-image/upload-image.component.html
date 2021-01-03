@@ -1,0 +1,21 @@
+<div class="card">
+    <div class="card-body text-center">
+        <br>
+        <h3>Upload your image</h3>
+        <br>
+        <p>File should be JPG or PNG</p>
+        <br>
+        <div ngx-dropzone [accept]="'image/*'" (change)="onSelect($event)">
+            <ngx-dropzone-label>Drag and drop your image here ...</ngx-dropzone-label>
+            <div *ngIf="isImageUploaded">
+                <ngx-dropzone-image-preview 
+                class="text-center" 
+                ngProjectAs="ngx-dropzone-preview" 
+                *ngFor="let f of files"
+                [file]="f" 
+                [removable]="false">
+            </ngx-dropzone-image-preview>
+            </div>
+        </div>
+    </div>
+</div>
