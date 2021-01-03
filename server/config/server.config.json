@@ -1,0 +1,11 @@
+{
+    "dev": {
+        "PORT" : 3000
+    },
+    "prod": {
+        "PORT" : 3201
+    },
+    "general": {
+        "welcome_text" : "Server started successfully!\n\t• Navigate on your browser on localhost:4200"
+    }
+}
