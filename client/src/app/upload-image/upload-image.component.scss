@@ -1,0 +1,83 @@
+@import '../../theme/colors.scss';
+
+.rounded-sign {
+  border-radius: 50px;
+  background: green;
+  padding: 20px;
+  width: 60px;
+  margin: auto;
+  height: 60px;
+  color: $white;
+}
+
+ngx-dropzone,
+.custom-dropzone {
+     margin: 5px;
+}
+
+.custom-dropzone {
+    height: 400px;
+    background: $white;
+    color: black;
+    border: 5px dashed $app-red-color;
+    border-radius: 5px;
+    font-size: 20px;
+  }
+  
+  .custom-dropzone.ngx-dz-hovered {
+    border: 1px solid $app-red-color
+  }
+
+  .upload-image-input{
+      border: 1px solid $app-blue-color;
+      width: 60%;
+      margin: auto;
+  }
+
+  .url-image-input{
+    width: 70%;
+    margin: auto;
+  }
+
+.img-thumbnail{
+  height: 400px;
+  width: auto;
+}
+
+
+.flexContainer {
+  width: 80%;
+  margin: auto;
+  display: flex;
+}
+
+.inputField {
+  flex: 1;
+}
+
+.copy-url-btn{
+  padding: 12px;
+  border: none;
+  color: $white;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+}
+
+input{
+  padding: 12px 10px;
+  display: inline-block;
+  border: 1px solid $light-gray;
+  border-radius: 4px;
+  box-sizing: border-box;
+}
+
+.copy-clipboard-message{
+  padding:10px
+}
+
+.card-body{
+  border-color: 5px solid red !important;
+}
+
+  

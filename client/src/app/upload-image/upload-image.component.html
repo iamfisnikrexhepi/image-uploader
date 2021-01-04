@@ -1,21 +1,52 @@
 <div class="card">
+
     <div class="card-body text-center">
-        <br>
-        <h3>Upload your image</h3>
-        <br>
-        <p>File should be JPG or PNG</p>
-        <br>
-        <div ngx-dropzone [accept]="'image/*'" (change)="onSelect($event)">
-            <ngx-dropzone-label>Drag and drop your image here ...</ngx-dropzone-label>
-            <div *ngIf="isImageUploaded">
-                <ngx-dropzone-image-preview 
-                class="text-center" 
-                ngProjectAs="ngx-dropzone-preview" 
-                *ngFor="let f of files"
-                [file]="f" 
-                [removable]="false">
-            </ngx-dropzone-image-preview>
+        <div *ngIf="uploadingImage">
+            <h4 class="text-center">Uploading...</h4>
+            <br>
+            <div class="progress">
+                <div class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar"
+                    aria-valuenow="100" aria-valuemin="0" aria-valuemax="100" style="width: 100%"></div>
             </div>
+        </div>
+
+        <div *ngIf="!uploadingImage">
+            <span *ngIf="isImageUploadedSuccessfully" style='font-size:80px;'>&#9989;</span>
+            <br>
+            <h3>{{uploadTitle}}</h3>
+            <br>
+            <p *ngIf="!isImageUploadedSuccessfully">File should be JPG or PNG</p>
+            <br>
+
+            <section *ngIf="!isImageUploadedSuccessfully">
+                <div class="custom-dropzone col-12" ngx-dropzone [accept]="'image/*'" (change)="onImageUpload($event.addedFiles)">
+
+                    <div class="col-10 offset-1">
+                        <ngx-dropzone-label>Drag and drop your image here ...</ngx-dropzone-label>
+                    </div>
+
+                </div>
+                <br>
+                <input class="upload-image-input" type="file" name="Image" (change)="onImageUpload($event.target.files)">
+            </section>
+
+
+            <section *ngIf="isImageUploadedSuccessfully">
+                <div>
+                    <img class="rounded img-thumbnail" alt="Responsive image" [src]="urlImage">
+                </div>
+                <br>
+
+                <div class="flexContainer">
+                    <input #urlToCopy type="text" [value]="urlImage" class="inputField url-image-input" readonly>
+                    <button class="btn-primary rounded copy-url-btn" type="submit" (click)="copyUrl(urlToCopy)" >Copy Url</button>
+                </div>
+                <br>
+
+                <label *ngIf="msgHideAndShow" 
+                       class="btn-info rounded copy-clipboard-message" >{{textMessage}}
+                </label>  
+            </section>
         </div>
     </div>
 </div>

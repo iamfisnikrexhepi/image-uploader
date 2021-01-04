@@ -10,11 +10,12 @@ router.post('/', upload.single('Image'), (req, res, next) => {
         error.httpStatusCode = 400
         return next(error)
     }
+    // console.log(req)
     res.status(200).send({
         statusCode: 200,
         status: 'success',
-        uploadedFile: file
-    })
+        uploadedFile: file.filename,
+    });
 
 }, (error, req, res, next) => {
     res.status(400).send({
