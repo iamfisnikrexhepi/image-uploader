@@ -1,5 +1,4 @@
 <div class="card">
-
     <div class="card-body text-center">
         <!-- Begin of Uploading Progress -->
         <div *ngIf="uploadingImage">
@@ -10,12 +9,14 @@
                 <div class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar"
                     aria-valuenow="100" aria-valuemin="0" aria-valuemax="100" style="width: 100%"></div>
             </div>
-            
+
         </div>
-          <!-- End of Uploading Progress -->
+        <!-- End of Uploading Progress -->
 
         <div *ngIf="!uploadingImage">
-            <span *ngIf="isImageUploadedSuccessfully" style='font-size:80px;'>&#9989;</span>
+            <div *ngIf="isImageUploadedSuccessfully" class="circle-loader">
+                <div class="checkmark draw"></div>
+            </div>
             <br>
             <h3>{{uploadTitle}}</h3>
             <br>
@@ -25,7 +26,8 @@
             <!-- Begin of Uploading Image section -->
             <section *ngIf="!isImageUploadedSuccessfully">
 
-                <div class="custom-dropzone col-12" ngx-dropzone [accept]="'image/png,image/jpeg'" (change)="onImageUpload($event.addedFiles)">
+                <div class="custom-dropzone col-12" ngx-dropzone [accept]="'image/png,image/jpeg'"
+                    (change)="onImageUpload($event.addedFiles)">
                     <div class="col-10 offset-1">
                         <img class="col-5 image-icon" src="assets/imageicon.png">
                         <br>
@@ -38,7 +40,8 @@
                 <label for="file-upload" class="upload-image-input">
                     Choose an Image
                 </label>
-                <input id="file-upload" type="file" accept="image/png,image/jpeg" (change)="onImageUpload($event.target.files)"/>
+                <input id="file-upload" type="file" accept="image/png,image/jpeg"
+                    (change)="onImageUpload($event.target.files)" />
 
             </section>
             <!-- End of Uploading Image section -->
@@ -53,13 +56,13 @@
 
                 <div class="flexContainer">
                     <input #urlToCopy type="text" [value]="urlImage" class="inputField url-image-input" readonly>
-                    <button class="btn-primary rounded copy-url-btn" type="submit" (click)="copyUrl(urlToCopy)" >Copy Url</button>
+                    <button class="btn-primary rounded copy-url-btn" type="submit" (click)="copyUrl(urlToCopy)">Copy
+                        Url</button>
                 </div>
                 <br>
 
-                <label *ngIf="msgHideAndShow" 
-                       class="btn-info rounded copy-clipboard-message" >{{textMessage}}
-                </label>  
+                <label *ngIf="msgHideAndShow" class="btn-info rounded copy-clipboard-message">{{textMessage}}
+                </label>
 
             </section>
             <!-- End of Uploading Succesfully Image section -->
