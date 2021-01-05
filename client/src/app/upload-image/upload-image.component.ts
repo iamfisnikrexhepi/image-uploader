@@ -37,14 +37,14 @@ export class UploadImageComponent implements OnInit, OnDestroy {
     this.uploadingImage = true;
 
     // Subsribe the service post method to get the response from the api.
-    this.uploadFileResponse$ = this.httpService.post('/uploadFile', this.formData)
+    this.uploadFileResponse$ = this.httpService.post('/api/upload-image', this.formData)
       .subscribe(response => {
         // console.log(response.uploadedFile);
         if (response.statusCode === 200)
           this.isImageUploadedSuccessfully = true;
         this.uploadTitle = 'Uploaded Succesful !';
         // combining paramethers to generate the url of image
-        this.urlImage = `${this.apiUrl}/${response.uploadedFile}`
+        this.urlImage = `${this.apiUrl}/api/upload-image/images/${response.uploadedFile}`
         this.startUploadingTimer();
       }, error => {
         console.error(error);
