@@ -1,8 +1,9 @@
 const express = require('express');
 const router = express.Router();
 const upload = require('../services/upload.image.service');
+const path = require('path')
 
-router.post('/', upload.single('Image'), (req, res, next) => {
+router.post('', upload.single('Image'), (req, res, next) => {
     const file = req.file
     // console.log(req);
     if (!file) {
@@ -21,6 +22,11 @@ router.post('/', upload.single('Image'), (req, res, next) => {
     res.status(400).send({
         error: error.message
     })
+});
+
+router.get('/images/:imageId', function (req, res) {
+    const imageParam = req.params.imageId;
+    res.sendFile(path.join(`${process.env.HOME || process.env.USERPROFILE}/downloads/${imageParam}`))
 });
 
 module.exports = router;
