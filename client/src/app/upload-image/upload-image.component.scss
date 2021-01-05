@@ -1,13 +1,7 @@
 @import '../../theme/colors.scss';
 
-.rounded-sign {
-  border-radius: 50px;
-  background: green;
-  padding: 20px;
-  width: 60px;
-  margin: auto;
-  height: 60px;
-  color: $white;
+.card {
+  border-radius: 1rem;
 }
 
 ngx-dropzone,
@@ -18,20 +12,38 @@ ngx-dropzone,
 .custom-dropzone {
     height: 400px;
     background: $white;
-    color: black;
-    border: 5px dashed $app-red-color;
+    color: $black;
+    border: 3px dashed $app-blue-color;
     border-radius: 5px;
     font-size: 20px;
   }
   
-  .custom-dropzone.ngx-dz-hovered {
-    border: 1px solid $app-red-color
+  input[type="file"] {
+    display: none;
+  }
+  
+  .upload-image-input:hover {
+    background-color: $app-blue-color;
+  }
+  
+  .upload-image-input:active {
+    background-color: $app-blue-color;
+    box-shadow: 0 0px $app-dark-gray;
+    transform: translateY(4px);
   }
 
+
   .upload-image-input{
-      border: 1px solid $app-blue-color;
-      width: 60%;
-      margin: auto;
+    box-shadow: 0 2px $app-dark-gray;
+    outline: none;
+    cursor: pointer;
+    font-weight: bold;
+    border-radius: 10px;
+    background-color: $app-blue-color;
+    color: $white;
+    padding: 6px 12px;
+    width: 50%;
+    margin: auto;
   }
 
   .url-image-input{
@@ -67,17 +79,20 @@ ngx-dropzone,
 input{
   padding: 12px 10px;
   display: inline-block;
-  border: 1px solid $light-gray;
+  border: 1px solid $app-dark-gray;
   border-radius: 4px;
   box-sizing: border-box;
 }
 
 .copy-clipboard-message{
-  padding:10px
+  padding: 10px;
+  width: 60%;
+  margin: auto;
+  cursor: no-drop;
 }
 
-.card-body{
-  border-color: 5px solid red !important;
+.image-icon{
+  opacity: .4;
 }
 
   

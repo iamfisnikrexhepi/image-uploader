@@ -1,14 +1,18 @@
 <div class="card">
 
     <div class="card-body text-center">
+        <!-- Begin of Uploading Progress -->
         <div *ngIf="uploadingImage">
+
             <h4 class="text-center">Uploading...</h4>
             <br>
             <div class="progress">
                 <div class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar"
                     aria-valuenow="100" aria-valuemin="0" aria-valuemax="100" style="width: 100%"></div>
             </div>
+            
         </div>
+          <!-- End of Uploading Progress -->
 
         <div *ngIf="!uploadingImage">
             <span *ngIf="isImageUploadedSuccessfully" style='font-size:80px;'>&#9989;</span>
@@ -18,20 +22,30 @@
             <p *ngIf="!isImageUploadedSuccessfully">File should be JPG or PNG</p>
             <br>
 
+            <!-- Begin of Uploading Image section -->
             <section *ngIf="!isImageUploadedSuccessfully">
-                <div class="custom-dropzone col-12" ngx-dropzone [accept]="'image/*'" (change)="onImageUpload($event.addedFiles)">
 
+                <div class="custom-dropzone col-12" ngx-dropzone [accept]="'image/png,image/jpeg'" (change)="onImageUpload($event.addedFiles)">
                     <div class="col-10 offset-1">
+                        <img class="col-5 image-icon" src="assets/imageicon.png">
+                        <br>
+                        <br>
                         <ngx-dropzone-label>Drag and drop your image here ...</ngx-dropzone-label>
                     </div>
-
                 </div>
+
                 <br>
-                <input class="upload-image-input" type="file" name="Image" (change)="onImageUpload($event.target.files)">
+                <label for="file-upload" class="upload-image-input">
+                    Choose an Image
+                </label>
+                <input id="file-upload" type="file" accept="image/png,image/jpeg" (change)="onImageUpload($event.target.files)"/>
+
             </section>
+            <!-- End of Uploading Image section -->
 
-
+            <!-- Begin of Uploading Succesfully Image section -->
             <section *ngIf="isImageUploadedSuccessfully">
+
                 <div>
                     <img class="rounded img-thumbnail" alt="Responsive image" [src]="urlImage">
                 </div>
@@ -46,7 +60,9 @@
                 <label *ngIf="msgHideAndShow" 
                        class="btn-info rounded copy-clipboard-message" >{{textMessage}}
                 </label>  
+
             </section>
+            <!-- End of Uploading Succesfully Image section -->
         </div>
     </div>
 </div>
