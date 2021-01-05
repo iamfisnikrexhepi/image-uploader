@@ -27,20 +27,23 @@ export class UploadImageComponent implements OnInit, OnDestroy {
   }
 
   ngOnInit(): void {
+
   }
 
-
+ // Event which is called when user drag and drop or choose file via button.
   onImageUpload(event) {
     this.imageFile = event[0];
     this.formData.append("Image", this.imageFile);
     this.uploadingImage = true;
 
+    // Subsribe the service post method to get the response from the api.
     this.uploadFileResponse$ = this.httpService.post('/uploadFile', this.formData)
       .subscribe(response => {
-        console.log(response.uploadedFile);
+        // console.log(response.uploadedFile);
         if (response.statusCode === 200)
           this.isImageUploadedSuccessfully = true;
         this.uploadTitle = 'Uploaded Succesful !';
+        // combining paramethers to generate the url of image
         this.urlImage = `${this.apiUrl}/${response.uploadedFile}`
         this.startUploadingTimer();
       }, error => {
@@ -49,6 +52,7 @@ export class UploadImageComponent implements OnInit, OnDestroy {
   }
 
 
+  // shows message that link is copied and hide the message after 1 second.
   showCopiedClipboardMessage() {
     this.textMessage = "Url Copied to Clipboard";
     this.msgHideAndShow = true;
@@ -58,6 +62,7 @@ export class UploadImageComponent implements OnInit, OnDestroy {
     }, 1000);
   }
 
+  // copy url link to clipboard
   copyUrl(urlToCopy) {
     urlToCopy.select();
     document.execCommand('copy');
@@ -65,6 +70,7 @@ export class UploadImageComponent implements OnInit, OnDestroy {
     this.showCopiedClipboardMessage();
   }
 
+  // simple timer to show uploading progress bar for 1.5second.
   startUploadingTimer() {
     setTimeout(() => {
       this.uploadingImage = false;
@@ -72,8 +78,9 @@ export class UploadImageComponent implements OnInit, OnDestroy {
   }
 
   ngOnDestroy(): void {
-    if(this.uploadFileResponse$ !== undefined){
+    if(this.uploadFileResponse$ != undefined){
       this.uploadFileResponse$.unsubscribe();
     }
   }
+
 }
