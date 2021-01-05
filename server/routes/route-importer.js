@@ -1,5 +1,5 @@
 const router = require('express').Router();
-const upload_image_route = require('./upload.image.route');
+const upload_image_route = require('./upload-image/upload.image.route');
 
 
 router.use('/upload-image', upload_image_route);

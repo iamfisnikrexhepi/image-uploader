@@ -12,13 +12,13 @@ const routes = require('./server/routes/route-importer');
 const app = express();
 
 try {
-  // Using MIDDLEWARE
+  // serving client as static
   app.use(express.static(path.join(__dirname, 'client/dist/client')));
 
   // Cors allow usage of server from different origin only for development.
   app.use(cors());
 
-
+  // Initialize backend API routes
   app.use('/api', routes);
 
   // Serve client views

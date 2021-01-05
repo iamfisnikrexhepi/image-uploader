@@ -1,6 +1,6 @@
 const express = require('express');
 const router = express.Router();
-const upload = require('../services/upload.image.service');
+const upload = require('../../services/upload.image.service');
 const path = require('path')
 
 router.post('', upload.single('Image'), (req, res, next) => {
