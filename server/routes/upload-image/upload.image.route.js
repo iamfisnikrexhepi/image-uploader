@@ -24,7 +24,7 @@ router.post('', upload.single('Image'), (req, res, next) => {
     })
 });
 
-router.get('/images/:imageId', function (req, res) {
+router.get('/images/:imageId', (req, res) => {
     const imageParam = req.params.imageId;
     res.sendFile(path.join(`${process.env.HOME || process.env.USERPROFILE}/downloads/${imageParam}`))
 });
