@@ -1,2 +1,2 @@
 # image-uploader
-simple image uploader using angular and nodeJs.
+image uploader using angular and nodeJs.
